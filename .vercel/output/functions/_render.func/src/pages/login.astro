@@ -1,0 +1,40 @@
+---
+import { SignIn } from "@clerk/astro/components";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+
+export const prerender = false;
+
+
+---
+
+<DefaultLayout title="Sign In - Your Account">
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+    <div class="max-w-md w-full">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Welcome back</h1>
+        <p class="mt-2 text-gray-600">Sign in to your account</p>
+      </div>
+      
+      <!-- Sign In Form -->
+      <div class="bg-white py-8 px-6 shadow-lg rounded-lg border border-gray-100">
+        <SignIn path="/login" />
+      </div>
+      
+      <!-- Footer Links -->
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Don't have an account? 
+          <a href="/register" class="text-pink-600 hover:text-pink-500 font-medium transition-colors">
+            Sign up here
+          </a>
+        </p>
+        <div class="mt-4">
+          <a href="/" class="text-sm text-gray-500 hover:text-gray-700 transition-colors">
+            ← Back to home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</DefaultLayout>
