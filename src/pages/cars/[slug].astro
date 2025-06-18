@@ -1,0 +1,149 @@
+---
+// filepath: src/pages/cars/[slug].astro
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const cars = await getCollection("cars");
+  return cars.map((car) => ({
+    params: { slug: car.slug },
+    props: { car },
+  }));
+}
+
+const { car } = Astro.props;
+
+if (!car) {
+  return Astro.redirect('/404');
+}
+
+
+
+const PHONE_NUMBER = "56938980598";
+const whatsappMessage = `Hola! Me interesa el ${car.data.title} ${car.data.year}. Precio: €${car.data.price_per_day}/día`;
+const whatsappURL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<DefaultLayout title={`${car.data.title} ${car.data.year}`}>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    
+    <!-- Back button -->
+    <a href="/cars" class="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 mb-6">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back to Cars
+    </a>
+
+    <!-- Title -->
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">{car.data.title}</h1>
+    <p class="text-gray-600 mb-8">{car.data.year} • {car.data.category}</p>
+
+    <!-- Main image -->
+    <img
+      src={car.data.main_image}
+      alt={car.data.title}
+      class="w-full h-96 object-cover rounded-lg mb-8"
+    />
+
+    <!-- Content grid -->
+    <div class="grid lg:grid-cols-3 gap-8">
+      
+      <!-- Details -->
+      <div class="lg:col-span-2 space-y-6">
+        
+        <!-- Specs -->
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Specifications</h2>
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="text-gray-600">Passengers:</span>
+              <span class="font-medium ml-2">{car.data.max_passengers}</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Transmission:</span>
+              <span class="font-medium ml-2">{car.data.transmission}</span>
+            </div>
+            <div>
+              <span class="text-gray-600">Fuel:</span>
+              <span class="font-medium ml-2">{car.data.fuel_type}</span>
+            </div>
+            {car.data.doors && (
+              <div>
+                <span class="text-gray-600">Doors:</span>
+                <span class="font-medium ml-2">{car.data.doors}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Features -->
+        {car.data.features && car.data.features.length > 0 && (
+          <div class="bg-white border rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {car.data.features.map((feature) => (
+                <div class="flex items-center gap-2 text-sm">
+                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  {feature}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Description -->
+        <div class="bg-white border rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Description</h2>
+          <div class="prose max-w-none">
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="bg-white border rounded-lg p-6 sticky top-8">
+          
+          <!-- Price -->
+          <div class="text-center mb-6">
+            <div class="text-3xl font-bold text-blue-600">€{car.data.price_per_day}</div>
+            <div class="text-gray-600">per day</div>
+          </div>
+
+          <!-- WhatsApp button -->
+          <a
+            href={whatsappURL}
+            target="_blank"
+            class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 mb-4"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+            Contact WhatsApp
+          </a>
+
+          <!-- Info -->
+          <div class="text-sm space-y-2 text-gray-600">
+            <div class="flex justify-between">
+              <span>Location:</span>
+              <span>{car.data.location || 'Flexible'}</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Min rental:</span>
+              <span>1 day</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Insurance:</span>
+              <span class="text-green-600">Included</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DefaultLayout>

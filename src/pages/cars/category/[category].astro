@@ -1,0 +1,130 @@
+---
+// filepath: src/pages/cars/category/[category].astro
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import CarCard from "../../../components/CarCard.astro";
+import { carCategories } from "../../../data/carCategories.js";
+
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+    return carCategories.map((cat) => ({
+        params: { category: cat.link },
+    }));
+}
+
+const { category } = Astro.params;
+const selectedCategory = carCategories.find((cat) => cat.link === category);
+
+// Obtener todos los autos y filtrar por categoría
+const allCars = await getCollection("cars");
+const filteredCars = allCars.filter((car) => car.data.category === category);
+
+// Título dinámico para SEO
+const pageTitle = selectedCategory 
+    ? `${selectedCategory.label} Cars - Find Your Perfect ${selectedCategory.label} Vehicle`
+    : "Category Cars";
+---
+
+<DefaultLayout title={pageTitle}>
+    <!-- Header con gradiente -->
+    <div class="bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <div class="mx-auto max-w-7xl px-6 py-12">
+            <!-- Navegación y header -->
+            <div class="mb-12">
+                <!-- Breadcrumb -->
+                <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+                    <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <a href="/cars" class="hover:text-blue-600 transition-colors">Cars</a>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-900 font-medium capitalize">{selectedCategory?.label}</span>
+                </nav>
+
+                <!-- Título principal -->
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl font-light text-gray-900 mb-3 tracking-tight">
+                            {selectedCategory?.label} 
+                            <span class="font-normal text-gray-600">Cars</span>
+                        </h1>
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                            </svg>
+                            <span class="text-lg">
+                                {filteredCars.length} 
+                                {filteredCars.length === 1 ? 'vehicle' : 'vehicles'} available
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de navegación -->
+                    <div class="flex items-center gap-3">
+                        <a 
+                            href="/cars" 
+                            class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium group"
+                        >
+                            <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            All Cars
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de vehículos -->
+            {filteredCars.length > 0 ? (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    {filteredCars.map((car) => (
+                        <CarCard
+                            title={car.data.title}
+                            year={car.data.year}
+                            price={car.data.price_per_day.toString()}
+                            image={car.data.main_image}
+                            category={car.data.category}
+                            passengers={car.data.max_passengers}
+                            transmission={car.data.transmission}
+                            fuelType={car.data.fuel_type}
+                            slug={car.slug}
+                            brand={car.data.brand}
+                            model={car.data.model}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <!-- Estado vacío -->
+                <div class="text-center py-20">
+                    <div class="max-w-md mx-auto">
+                        <div class="bg-gray-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-3">
+                            No {selectedCategory?.label.toLowerCase()} cars found
+                        </h2>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            We don't have any cars in the {selectedCategory?.label.toLowerCase()} category at the moment. 
+                            Check back soon or explore other categories.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a 
+                                href="/cars" 
+                                class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+                            >
+                                Browse All Cars
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    </div>
+</DefaultLayout>

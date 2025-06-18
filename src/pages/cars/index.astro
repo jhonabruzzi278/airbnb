@@ -1,0 +1,112 @@
+---
+// filepath: src/pages/cars/index.astro
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import Hero from "../../components/Hero.astro";
+import CarCategoryCard from "../../components/CarCategoryCard.astro"; // Importar el componente
+import { carCategories } from "../../data/carCategories.js";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+const allCars = await getCollection("cars");
+---
+
+<DefaultLayout title="Car Rentals - Find Your Perfect Vehicle">
+  <Hero />
+
+  <!-- Categories Section -->
+  <section class="bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 py-6 lg:py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-6">
+        <h2 class="text-xl lg:text-2xl font-bold text-white mb-2">Browse Car Categories</h2>
+        <p class="text-sm lg:text-base text-blue-100">Find the perfect vehicle for your journey</p>
+      </div>
+
+      <!-- Mobile: Horizontal scroll, Desktop: Grid -->
+      <div class="lg:hidden">
+        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          {carCategories.map((cat) => (
+            <div class="flex-shrink-0">
+              <CarCategoryCard
+                label={cat.label}
+                icon={cat.icon}
+                link={cat.link}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Desktop Grid -->
+      <div class="hidden lg:grid grid-cols-5 gap-4 max-w-4xl mx-auto">
+        {carCategories.map((cat) => (
+          <CarCategoryCard
+            label={cat.label}
+            icon={cat.icon}
+            link={cat.link}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cars Section -->
+  <section class="py-6 lg:py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-6 lg:mb-10">
+        <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-2 lg:mb-4">Featured Vehicles</h2>
+        <p class="text-sm lg:text-base text-gray-600">
+          Handpicked cars for every occasion
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+        {allCars.slice(0, 8).map((car) => (
+          <div class="group bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img 
+                src={car.data.main_image} 
+                alt={`${car.data.brand} ${car.data.model} ${car.data.year}`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-3 right-3">
+                <span class="bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold text-gray-900">
+                  ${car.data.price_per_day}/day
+                </span>
+              </div>
+            </div>
+            
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 mb-1 truncate">
+                {car.data.brand} {car.data.model}
+              </h3>
+              <p class="text-sm text-gray-600 mb-2">{car.data.year} • {car.data.category}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-lg font-bold text-gray-900">${car.data.price_per_day}</span>
+                <a 
+                  href={`/cars/${car.slug}`}
+                  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded-lg text-sm font-medium transition-colors"
+                >
+                  Rent Now
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

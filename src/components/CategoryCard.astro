@@ -1,0 +1,37 @@
+---
+// filepath: src/components/CategoryCard.astro
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  label: string;
+  icon: string;
+  link: string;
+}
+const { label, icon, link } = Astro.props as Props;
+---
+
+<article class="group">
+  <a
+    href={`/categories/${link}`}
+    aria-label={`Browse ${label} properties`}
+    class="flex flex-col items-center p-4 rounded-xl 
+           bg-white/70 hover:bg-white hover:shadow-lg 
+           border border-white/50 hover:border-pink-200
+           focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2
+           transform hover:-translate-y-1 transition-all duration-300"
+  >
+    <!-- Icono container -->
+    <div class="w-12 h-12 bg-gradient-to-br from-pink-50 to-purple-50 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+      <Icon 
+        name={icon}
+        size={24}
+        class="text-gray-600 group-hover:text-pink-500 transition-colors duration-200"
+      />
+    </div>
+    
+    <!-- Label -->
+    <span class="text-sm font-medium text-gray-700 group-hover:text-pink-600 transition-colors duration-200 text-center leading-tight">
+      {label}
+    </span>
+  </a>
+</article>

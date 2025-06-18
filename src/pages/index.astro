@@ -1,11 +1,187 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import Hero from "../components/Hero.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ListingCard from "../components/ListingCard.astro";
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const rentals = await getCollection("rentals");
+const featuredRentals = rentals.slice(0, 8);
+
+const checkIcon = `<svg class="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>`;
+
+const clockIcon = `<svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>`;
+
+const lockIcon = `<svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+</svg>`;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<DefaultLayout title="Rentas - Your Perfect Stay & Ride Awaits">
+  <!-- Hero con todo integrado -->
+  <Hero />
+
+  <!-- Featured Properties Section -->
+  <section class="py-12 lg:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeader 
+        title="Featured Properties"
+        subtitle="Handpicked selection of our best properties to inspire your next getaway"
+      />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6 lg:gap-8">
+        {featuredRentals.map((rental) => (
+          <div class="group">
+            <ListingCard
+              price={rental.data.price_per_night.toString()}
+              image={rental.data.main_image}
+              location={rental.data.location}
+              slug={rental.slug}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10 lg:mt-12">
+        <a 
+          href="/listing"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+        >
+          <span>View All Properties</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-12 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <SectionHeader 
+        title="Why Choose Rentas?"
+        subtitle="We make finding and booking your perfect stay or ride simple, secure, and enjoyable"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <FeatureCard 
+          title="Verified Quality"
+          description="All properties and vehicles are carefully inspected and verified for quality and safety standards."
+          iconSvg={checkIcon}
+          bgColor="bg-pink-100"
+          iconColor="text-pink-600"
+        />
+
+        <FeatureCard 
+          title="24/7 Support"
+          description="Get help whenever you need it with our round-the-clock customer support team."
+          iconSvg={clockIcon}
+          bgColor="bg-blue-100"
+          iconColor="text-blue-600"
+        />
+
+        <FeatureCard 
+          title="Secure Booking"
+          description="Your payments and personal information are always protected with bank-level security."
+          iconSvg={lockIcon}
+          bgColor="bg-green-100"
+          iconColor="text-green-600"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 relative overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+      <img 
+        src="/home-footer.webp" 
+        alt="Background" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
+      <p class="text-lg lg:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Join thousands of satisfied customers who have found their perfect stays and rides with us.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/listing"
+          class="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+        >
+          Find Your Stay
+        </a>
+        <a 
+          href="/cars"
+          class="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+        >
+          Rent Your Ride
+        </a>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  /* Hide scrollbar for mobile category scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    /* Improve touch targets */
+    button {
+      min-height: 44px;
+    }
+    
+    /* Better mobile spacing */
+    .group:hover {
+      transform: none;
+    }
+    
+    /* Optimize images for mobile */
+    img {
+      will-change: transform;
+    }
+  }
+
+  /* Desktop enhancements */
+  @media (min-width: 1024px) {
+    /* Smooth hover effects */
+    .group:hover {
+      transform: translateY(-4px);
+    }
+    
+    /* Enhanced shadows */
+    .hover\:shadow-md:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  /* Performance optimizations */
+  .grid > * {
+    contain: layout style paint;
+  }
+  
+  /* Smooth animations */
+  .active\:scale-95:active {
+    transform: scale(0.95);
+  }
+</style>

@@ -1,5 +1,18 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
+import clerk from '@clerk/astro';
+import icon from 'astro-icon';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  output: 'server',
+  adapter: vercel({
+    edgeMiddleware: true,  // ejecuta middleware en Edge
+    // puedes agregar imageService, webAnalytics, etc.
+  }),
+  vite: { plugins: [tailwindcss()] },
+  integrations: [
+    icon(),
+    clerk({ afterSignInUrl: '/', afterSignUpUrl: '/' }),
+  ],
+});
