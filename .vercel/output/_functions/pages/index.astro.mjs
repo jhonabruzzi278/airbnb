@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, m as maybeRenderHead, b as addAttribute, u as unescapeHTML, r as renderTemplate, e as renderComponent } from "../chunks/astro/server_DFM0Vk-K.mjs";
 import "kleur/colors";
-import { $ as $$DefaultLayout } from "../chunks/DefaultLayout_BJAp9j5Q.mjs";
+import { $ as $$DefaultLayout } from "../chunks/DefaultLayout_AII1oG3K.mjs";
 import { $ as $$Hero } from "../chunks/Hero_Burgx2dU.mjs";
 import "clsx";
 import { $ as $$ListingCard } from "../chunks/ListingCard_CzaDEJ0a.mjs";

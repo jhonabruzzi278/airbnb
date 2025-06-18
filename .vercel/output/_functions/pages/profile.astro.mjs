@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, r as renderTemplate, f as defineScriptVars, e as renderComponent, u as unescapeHTML, F as Fragment, g as renderSlot, m as maybeRenderHead, b as addAttribute } from "../chunks/astro/server_DFM0Vk-K.mjs";
 import "kleur/colors";
-import { g as generateSafeId, $ as $$DefaultLayout, b as $$SignedIn, c as $$SignedOut } from "../chunks/DefaultLayout_BJAp9j5Q.mjs";
+import { g as generateSafeId, $ as $$DefaultLayout, b as $$SignedIn, c as $$SignedOut } from "../chunks/DefaultLayout_AII1oG3K.mjs";
 import { renderers } from "../renderers.mjs";
 function addUnstyledAttributeToFirstTag(html, attributeValue) {
   return html.replace(/(<[^>]+)>/, `$1 data-clerk-unstyled-id="${attributeValue}">`);

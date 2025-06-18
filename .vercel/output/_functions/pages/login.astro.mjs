@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, e as renderComponent, r as renderTemplate, m as maybeRenderHead } from "../chunks/astro/server_DFM0Vk-K.mjs";
 import "kleur/colors";
-import { a as $$InternalUIComponentRenderer, $ as $$DefaultLayout } from "../chunks/DefaultLayout_BJAp9j5Q.mjs";
+import { a as $$InternalUIComponentRenderer, $ as $$DefaultLayout } from "../chunks/DefaultLayout_AII1oG3K.mjs";
 import { renderers } from "../renderers.mjs";
 const $$Astro = createAstro();
 const $$SignIn = createComponent(($$result, $$props, $$slots) => {

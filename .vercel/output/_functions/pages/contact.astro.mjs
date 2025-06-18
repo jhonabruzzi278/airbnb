@@ -1,6 +1,6 @@
 import { c as createComponent, e as renderComponent, d as renderScript, r as renderTemplate, m as maybeRenderHead } from "../chunks/astro/server_DFM0Vk-K.mjs";
 import "kleur/colors";
-import { $ as $$DefaultLayout } from "../chunks/DefaultLayout_BJAp9j5Q.mjs";
+import { $ as $$DefaultLayout } from "../chunks/DefaultLayout_AII1oG3K.mjs";
 /* empty css                                   */
 import { renderers } from "../renderers.mjs";
 const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
