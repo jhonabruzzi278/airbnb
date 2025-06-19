@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'server',
   adapter: vercel({
+    runtime: 'nodejs18.x',
+    edgeMiddleware: false,
     
   }),
   vite: { plugins: [tailwindcss()] },
