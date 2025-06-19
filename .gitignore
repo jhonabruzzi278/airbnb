@@ -4,8 +4,10 @@ dist/
 # generated types
 .astro/
 
-# dependencies
+# dependencias
 .node_modules/
+
+.vercel
 
 # logs
 npm-debug.log*
