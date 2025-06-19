@@ -1,17 +1,20 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel';
-import node from '@astrojs/node';
+import netlify from '@astrojs/netlify/functions';
 import clerk from '@clerk/astro';
 import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 
-const useNode = process.argv.includes('--node');
-
 export default defineConfig({
   output: 'server',
-  adapter: useNode
-    ? node({ mode: 'standalone' })
-    : vercel({ runtime: 'nodejs18.x', edgeMiddleware: false }),
-  vite: { plugins: [tailwindcss()] },
-  integrations: [icon(), clerk({ afterSignInUrl: '/', afterSignUpUrl: '/' })],
+  adapter: netlify({
+    edgeMiddleware: false,         // deshabilita edge si no lo necesitas
+    cacheOnDemandPages: true       // opcional: habilita cache en requests SSR
+  }),
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [
+    icon(),
+    clerk({ afterSignInUrl: '/', afterSignUpUrl: '/' }),
+  ],
 });
