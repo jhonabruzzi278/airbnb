@@ -18,74 +18,74 @@ try {
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden">
-  <!-- Background Image - Nueva imagen con protagonismo -->
+  <!-- Background Image -->
   <div class="absolute inset-0">
     <picture>
       <source media="(max-width: 768px)" srcset="/home-bg.jpg" />
       <img
         src="/home-bg.jpg"
         alt="Beautiful vacation rental destination"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-center"
         loading="eager"
         fetchpriority="high"
       />
     </picture>
-    <!-- Overlay mínimo para legibilidad -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+    <!-- Overlay mejorado para mejor contraste -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20"></div>
   </div>
 
-  <!-- Hero Content - Efecto cristal -->
+  <!-- Hero Content -->
   <div class="relative z-10 w-full px-4 text-center text-white">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       
       <!-- Título Principal -->
       <div class="mb-8 md:mb-12">
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight drop-shadow-2xl">
-          Your Perfect
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span class="block text-white drop-shadow-2xl">Your Perfect</span>
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 animate-gradient">
             Adventure Awaits
           </span>
         </h1>
-        <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-          Discover amazing stays, premium rides, and unforgettable experiences
+        <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light">
+          Discover amazing stays, premium rides, and unforgettable experiences in one place
         </p>
       </div>
 
-      <!-- Botones de Acción Principales - Efecto Cristal -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16">
-        <!-- Listing Button -->
+      <!-- Botones Principales -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 md:mb-20">
         <a
           href="/listing"
-          class="scroll-link group bg-white/15 backdrop-blur-lg border border-white/30 hover:bg-white/25 hover:border-white/50 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl"
+          class="group bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 hover:border-white/50 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-2xl"
         >
-          <span class="flex items-center justify-center gap-2">
-            🏠 Find Your Stay
+          <span class="flex items-center justify-center gap-3">
+            <span class="text-2xl">🏠</span>
+            <span>Find Your Stay</span>
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </span>
         </a>
         
-        <!-- Cars Button -->
         <a
           href="/cars"
-          class="scroll-link group bg-white/15 backdrop-blur-lg border border-white/30 hover:bg-white/25 hover:border-white/50 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl"
+          class="group bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 hover:border-white/50 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-2xl"
         >
-          <span class="flex items-center justify-center gap-2">
-            🚗 Rent a Car
+          <span class="flex items-center justify-center gap-3">
+            <span class="text-2xl">🚗</span>
+            <span>Rent a Car</span>
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </span>
         </a>
 
-        <!-- Experiences Button -->
         <a
-          href="/experience"
-          class="scroll-link group bg-white/15 backdrop-blur-lg border border-white/30 hover:bg-white/25 hover:border-white/50 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl"
+          href="/experiences"
+          class="group bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 hover:border-white/50 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-2xl"
         >
-          <span class="flex items-center justify-center gap-2">
-            ✨ Experience
+          <span class="flex items-center justify-center gap-3">
+            <span class="text-2xl">✨</span>
+            <span>Experiences</span>
             <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
@@ -93,65 +93,66 @@ try {
         </a>
       </div>
 
-      <!-- Categorías Rápidas - Efecto Cristal -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
+      <!-- Categorías Rápidas -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16">
         <a
-          href="#featured-properties"
-          class="scroll-link group bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-2xl p-4 transition-all duration-300 transform hover:scale-105 shadow-xl"
+          href="/categories/beach"
+          class="group bg-white/15 backdrop-blur-sm hover:bg-white/25 border border-white/20 hover:border-white/40 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl"
         >
-          <div class="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">🏖️</div>
-          <div class="text-sm font-medium text-white">Beach</div>
+          <div class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🏖️</div>
+          <div class="text-base font-semibold text-white">Beach Houses</div>
+          <div class="text-sm text-white/70 mt-1">Ocean views</div>
         </a>
         <a
-          href="#featured-properties"
-          class="scroll-link group bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-2xl p-4 transition-all duration-300 transform hover:scale-105 shadow-xl"
+          href="/categories/city"
+          class="group bg-white/15 backdrop-blur-sm hover:bg-white/25 border border-white/20 hover:border-white/40 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl"
         >
-          <div class="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">🏙️</div>
-          <div class="text-sm font-medium text-white">City</div>
+          <div class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🏙️</div>
+          <div class="text-base font-semibold text-white">City Apartments</div>
+          <div class="text-sm text-white/70 mt-1">Urban living</div>
         </a>
         <a
-          href="#featured-properties"
-          class="scroll-link group bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-2xl p-4 transition-all duration-300 transform hover:scale-105 shadow-xl"
+          href="/cars/category/luxury"
+          class="group bg-white/15 backdrop-blur-sm hover:bg-white/25 border border-white/20 hover:border-white/40 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl"
         >
-          <div class="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">🚗</div>
-          <div class="text-sm font-medium text-white">Luxury</div>
+          <div class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🚗</div>
+          <div class="text-base font-semibold text-white">Luxury Cars</div>
+          <div class="text-sm text-white/70 mt-1">Premium rides</div>
         </a>
         <a
-          href="#featured-properties"
-          class="scroll-link group bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-2xl p-4 transition-all duration-300 transform hover:scale-105 shadow-xl"
+          href="/experiences/category/cultural"
+          class="group bg-white/15 backdrop-blur-sm hover:bg-white/25 border border-white/20 hover:border-white/40 rounded-2xl p-6 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-xl"
         >
-          <div class="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">✨</div>
-          <div class="text-sm font-medium text-white">Tours</div>
+          <div class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">✨</div>
+          <div class="text-base font-semibold text-white">Adventures</div>
+          <div class="text-sm text-white/70 mt-1">Unique tours</div>
         </a>
       </div>
 
-      <!-- Stats Compactas con efecto cristal -->
-      <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 max-w-md mx-auto shadow-2xl">
-        <div class="flex justify-center gap-8 text-white/90">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-white">{rentals.length}+</div>
-            <div class="text-sm">Properties</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-white">{cars.length}+</div>
-            <div class="text-sm">Vehicles</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-white">{experiences.length}+</div>
-            <div class="text-sm">Experiences</div>
-          </div>
+      <!-- Stats con diseño compacto y menos blur -->
+      <!-- Stats Section - Minimalist Design -->
+      <div class="grid grid-cols-3 gap-6 max-w-md mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1">{rentals.length}+</div>
+          <div class="text-white/70 text-sm">Properties</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1">{cars.length}+</div>
+          <div class="text-white/70 text-sm">Vehicles</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1">{experiences.length}+</div>
+          <div class="text-white/70 text-sm">Experiences</div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center bg-white/10 backdrop-blur-sm">
-      <div class="w-1 h-3 bg-white/80 rounded-full mt-2 animate-pulse"></div>
-    </div>
-  </div>
+  <!-- Scroll Indicator mejorado -->
+  
 </section>
 
 <style>
@@ -160,13 +161,18 @@ try {
     scroll-behavior: smooth;
   }
 
-  /* Imagen con protagonismo */
+  /* Imagen optimizada */
   section img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
 
-  /* Efecto cristal mejorado */
+  /* Backdrop blur mejorado */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
   .backdrop-blur-lg {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -182,6 +188,23 @@ try {
     -webkit-backdrop-filter: blur(8px);
   }
 
+  /* Animación de gradiente */
+  @keyframes gradient {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 4s ease-in-out infinite;
+  }
+
   /* Mobile optimizations */
   @media (max-width: 768px) {
     section {
@@ -189,31 +212,59 @@ try {
       min-height: 100svh;
     }
     
-    section img {
-      object-position: center;
-    }
-
-    /* Ajustar blur en móvil para mejor rendimiento */
-    .backdrop-blur-lg {
+    /* Reducir blur en móvil */
+    .backdrop-blur-xl {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
+
+    .backdrop-blur-lg {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .backdrop-blur-md {
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    /* Ajustar tamaños en móvil */
+    h1 {
+      font-size: 2.5rem !important;
+    }
+
+    p {
+      font-size: 1.125rem !important;
+    }
+
+    /* Botones más compactos en móvil */
+    .group {
+      padding: 1rem 1.5rem;
+    }
+
+    /* Stats más compactas en móvil */
+    .stats-container {
+      padding: 1rem;
+    }
   }
 
-  /* Hover effects más suaves */
+  /* Hover effects mejorados */
   @media (hover: hover) {
-    .scroll-link:hover {
-      transform: translateY(-2px) scale(1.05);
+    .group:hover {
+      transform: translateY(-2px) scale(1.02);
     }
   }
 
-  /* Respeto a las preferencias de movimiento */
+  /* Respeto a preferencias de movimiento */
   @media (prefers-reduced-motion: reduce) {
-    .animate-bounce {
-      animation: none;
-    }
-    
-    .animate-pulse {
+    .animate-bounce,
+    .animate-pulse,
+    .animate-gradient {
       animation: none;
     }
     
@@ -222,60 +273,74 @@ try {
     }
   }
 
-  /* Glassmorphism extra touches */
-  .scroll-link {
+  /* Glassmorphism mejorado */
+  .group {
     box-shadow: 
-      0 8px 32px 0 rgba(31, 38, 135, 0.37),
+      0 4px 16px 0 rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .scroll-link:hover {
+  .group:hover {
     box-shadow: 
-      0 8px 32px 0 rgba(31, 38, 135, 0.5),
+      0 6px 20px 0 rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Focus states mejorados */
+  a:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    border-radius: 1rem;
   }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scroll para todos los enlaces con scroll-link
-    document.querySelectorAll(".scroll-link").forEach((link) => {
+    // Smooth scroll mejorado
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener("click", (e) => {
+        e.preventDefault();
         const href = link.getAttribute("href");
+        if (!href) return;
+        const target = document.querySelector(href);
         
-        // Si es una página externa, dejar el comportamiento normal
-        if (href && !href.startsWith("#")) {
-          return; // Permitir navegación normal
-        }
-        
-        // Si es un anchor link, hacer scroll
-        if (href && href.startsWith("#")) {
-          e.preventDefault();
-          
-          // Buscar el elemento objetivo
-          let target = document.querySelector(href);
-          
-          // Si no existe el ID exacto, buscar por aria-labelledby
-          if (!target) {
-            const sectionWithLabel = document.querySelector(`[aria-labelledby="${href.slice(1)}"]`);
-            if (sectionWithLabel) {
-              target = sectionWithLabel;
-            }
-          }
-          
-          // Si aún no existe, buscar la primera sección después del hero
-          if (!target) {
-            target = document.querySelector('main section:first-child');
-          }
-          
-          if (target) {
-            target.scrollIntoView({ 
-              behavior: "smooth",
-              block: "start" 
-            });
-          }
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
         }
       });
+    });
+
+    // Preload de imágenes críticas
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+    preloadLink.href = "/home-bg.jpg";
+    document.head.appendChild(preloadLink);
+
+    // Lazy loading mejorado para stats
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-count-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observar elementos de stats
+    document.querySelectorAll('.group[class*="cursor-pointer"]').forEach(stat => {
+      observer.observe(stat);
     });
   });
 </script>
