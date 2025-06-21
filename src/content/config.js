@@ -1,7 +1,7 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
-const rentalsCollection = defineCollection({
-  type: 'content',
+const rentals = defineCollection({
+  type: "content",
   schema: z.object({
     title: z.string(),
     location: z.string(),
@@ -13,12 +13,11 @@ const rentalsCollection = defineCollection({
     room_type: z.string(),
     amenities: z.array(z.string()),
     main_image: z.string(),
-  })
+  }),
 });
 
-
-const carsCollection = defineCollection({
-  type: 'content',
+const cars = defineCollection({
+  type: "content",
   schema: z.object({
     title: z.string(),
     brand: z.string(),
@@ -35,10 +34,33 @@ const carsCollection = defineCollection({
     mileage: z.number(), // km per liter or efficiency rating
     doors: z.number(),
     available: z.boolean().default(true),
-  })
+  }),
 });
 
+const experiences = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    category: z.string(),
+    price_per_person: z.number(),
+    duration: z.string(),
+    max_participants: z.number(),
+    difficulty: z.string(),
+    location: z.string(),
+    main_image: z.string(),
+    gallery: z.array(z.string()).optional(),
+    includes: z.array(z.string()).optional(),
+    requirements: z.array(z.string()).optional(),
+    available: z.boolean().default(true),
+    featured: z.boolean().default(false),
+    rating: z.number().min(1).max(5).optional(),
+    reviews_count: z.number().default(0),
+  }),
+});
+
+// ✅ NOMBRES CONSISTENTES
 export const collections = {
-  'rentals': rentalsCollection,
-  'cars': carsCollection,
+  experiences,
+  rentals,
+  cars,
 };

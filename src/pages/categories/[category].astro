@@ -1,5 +1,5 @@
 ---
-import Hero from "../../components/Hero.astro";
+
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
 import { getCollection } from "astro:content";
 import { categories } from "../../data/categories.js";
@@ -27,7 +27,7 @@ const pageTitle = selectedCategory
 ---
 
 <DefaultLayout title={pageTitle}>
-    <Hero />
+    
     
     <!-- Header con gradiente -->
     <div class="bg-gradient-to-br from-gray-50 via-white to-pink-50">

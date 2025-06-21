@@ -7,478 +7,397 @@ const EMAIL_ADDRESS = "info@rentas.com";
 ---
 
 <DefaultLayout title="Contact - Rentas">
-  <!-- Mobile-first contact page -->
-  <div class="min-h-screen bg-gray-50">
-    <!-- Header responsive -->
-    <div class="bg-white px-4 lg:px-8 py-6 lg:py-12 text-center border-b border-gray-100">
-      <div class="max-w-2xl mx-auto">
-        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-          </svg>
-        </div>
-        <h1 class="text-2xl lg:text-4xl font-bold text-gray-900 mb-2">Get in Touch</h1>
-        <p class="text-gray-600 text-base lg:text-xl">We're here to help you find your perfect stay</p>
-      </div>
-    </div>
-
-    <!-- Quick contact options - Mobile optimized, Desktop enhanced -->
-    <div class="p-4 lg:p-8 max-w-4xl mx-auto">
-      <div class="grid gap-3 lg:gap-6 lg:grid-cols-2 mb-6">
-        <!-- WhatsApp button -->
-        <button id="whatsapp-contact" class="group w-full bg-green-500 hover:bg-green-600 text-white p-4 lg:p-6 rounded-2xl shadow-sm active:scale-95 hover:scale-[1.02] transition-all duration-200 flex items-center gap-4">
-          <div class="w-12 h-12 lg:w-16 lg:h-16 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
-            <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-            </svg>
-          </div>
-          <div class="text-left flex-1">
-            <div class="font-semibold text-lg lg:text-xl">WhatsApp Chat</div>
-            <div class="text-sm lg:text-base text-green-100">⚡ Instant response - Available 24/7</div>
-          </div>
-          <svg class="w-5 h-5 lg:w-6 lg:h-6 text-white/80 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
-
-        <!-- Email button -->
-        <button id="email-contact" class="group w-full bg-blue-500 hover:bg-blue-600 text-white p-4 lg:p-6 rounded-2xl shadow-sm active:scale-95 hover:scale-[1.02] transition-all duration-200 flex items-center gap-4">
-          <div class="w-12 h-12 lg:w-16 lg:h-16 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors">
-            <svg class="w-6 h-6 lg:w-8 lg:h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.887.732-1.636 1.636-1.636h3.819l6.545 4.91 6.545-4.91h3.819A1.636 1.636 0 0 1 24 5.457z"/>
-            </svg>
-          </div>
-          <div class="text-left flex-1">
-            <div class="font-semibold text-lg lg:text-xl">Send Email</div>
-            <div class="text-sm lg:text-base text-blue-100">📧 Professional response in 24h</div>
-          </div>
-          <svg class="w-5 h-5 lg:w-6 lg:h-6 text-white/80 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </button>
+  <div class="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Minimal Header -->
+      <div class="mb-8 md:mb-12">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-2">
+          Get in
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
+            Touch
+          </span>
+        </h1>
+        <p class="text-gray-600 text-xl">
+          We're here to help you find the perfect place.
+        </p>
       </div>
 
-      <!-- Contact form responsive -->
-      <div class="grid lg:grid-cols-5 gap-6 lg:gap-8">
-        <!-- Form column -->
-        <div class="lg:col-span-3">
-          <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100">
-            <h2 class="text-lg lg:text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
-            
-            <form id="contact-form" class="space-y-4 lg:space-y-6">
-              <!-- Name -->
+      <!-- Asymmetric Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6">
+        <!-- Large Contact Form -->
+        <div class="md:col-span-4 lg:col-span-5 bg-white rounded-3xl p-8 shadow-sm">
+          <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">
+              Send us a message
+            </h2>
+            <p class="text-gray-600">
+              We'll get back to you as soon as possible.
+            </p>
+          </div>
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                <input 
-                  type="text" 
-                  name="name" 
+                <input
+                  type="text"
+                  name="name"
                   required
-                  class="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-base"
-                  placeholder="Your full name"
+                  class="w-full px-0 py-4 border-0 border-b-2 border-gray-200 focus:border-pink-500 focus:ring-0 bg-transparent text-lg placeholder-gray-400 transition-all"
+                  placeholder="Your name"
                 />
               </div>
-
-              <!-- Email -->
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                <input 
-                  type="email" 
-                  name="email" 
+                <input
+                  type="email"
+                  name="email"
                   required
-                  class="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-base"
-                  placeholder="your.email@example.com"
+                  class="w-full px-0 py-4 border-0 border-b-2 border-gray-200 focus:border-pink-500 focus:ring-0 bg-transparent text-lg placeholder-gray-400 transition-all"
+                  placeholder="Your email"
                 />
               </div>
+            </div>
 
-              <!-- Phone -->
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                <input 
-                  type="tel" 
-                  name="phone"
-                  class="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-base"
-                  placeholder="+1 (555) 000-0000"
-                />
-              </div>
+            <div>
+              <select
+                name="inquiry-type"
+                required
+                class="w-full px-0 py-4 border-0 border-b-2 border-gray-200 focus:border-pink-500 focus:ring-0 bg-transparent text-lg transition-all"
+              >
+                <option value="">What do you need help with?</option>
+                <option value="booking">Property Booking</option>
+                <option value="info">General Information</option>
+                <option value="support">Customer Support</option>
+                <option value="partnership">Property Partnership</option>
+              </select>
+            </div>
 
-              <!-- Inquiry type -->
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">What can we help with? *</label>
-                <select 
-                  name="inquiry-type" 
-                  required
-                  class="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all text-base"
-                >
-                  <option value="">Select an option</option>
-                  <option value="booking">Booking Question</option>
-                  <option value="property">Property Information</option>
-                  <option value="support">Customer Support</option>
-                  <option value="partnership">Property Partnership</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+            <div>
+              <textarea
+                name="message"
+                rows="4"
+                required
+                class="w-full px-0 py-4 border-0 border-b-2 border-gray-200 focus:border-pink-500 focus:ring-0 bg-transparent text-lg placeholder-gray-400 resize-none transition-all"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
 
-              <!-- Message -->
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                <textarea 
-                  name="message" 
-                  rows="4" 
-                  required
-                  class="w-full px-4 py-3 lg:py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all resize-none text-base"
-                  placeholder="Tell us how we can help..."
-                ></textarea>
-              </div>
-
-              <!-- Submit buttons -->
-              <div class="space-y-3 pt-4">
-                <button 
+            <div class="pt-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button
                   type="button"
                   id="whatsapp-btn"
-                  class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 lg:py-5 rounded-xl shadow-md active:scale-95 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 text-base lg:text-lg"
+                  class="group relative overflow-hidden bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all transform hover:scale-105"
                 >
-                  <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                  </svg>
-                  Send via WhatsApp
+                  <span class="flex items-center justify-center gap-2">
+                    <svg
+                      class="w-6 h-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"
+                      ></path>
+                    </svg>
+                    Send via WhatsApp
+                  </span>
                 </button>
-                
-                <button 
+                <button
                   type="button"
-                  id="gmail-btn"
-                  class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 lg:py-5 rounded-xl shadow-md active:scale-95 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 text-base lg:text-lg"
+                  id="email-btn"
+                  class="group relative overflow-hidden bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-8 rounded-2xl transition-all transform hover:scale-105"
                 >
-                  <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.887.732-1.636 1.636-1.636h3.819l6.545 4.91 6.545-4.91h3.819A1.636 1.636 0 0 1 24 5.457z"/>
-                  </svg>
-                  Send via Email
+                  <span class="flex items-center justify-center gap-2">
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      ></path>
+                    </svg>
+                    Send via Email
+                  </span>
                 </button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
 
-        <!-- Info sidebar - Desktop only, mobile integrated -->
-        <div class="lg:col-span-2">
-          <!-- Contact info -->
-          <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100 mb-6 lg:mb-8">
-            <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact Information</h3>
-            
-            <div class="space-y-6">
-              <!-- WhatsApp info -->
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        <!-- Stacked Side Bentos -->
+        <div class="md:col-span-2 lg:col-span-3 space-y-4 md:space-y-6">
+          <!-- Contact Methods Card -->
+          <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-bold text-gray-900 text-lg mb-4">Direct Contact</h3>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 p-3 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors cursor-pointer" id="quick-chat">
+                <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"></path>
+                  </svg>
                 </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900">WhatsApp</h4>
-                  <p class="text-gray-600">+56 9 3898 0598</p>
-                  <p class="text-sm text-green-600 font-medium">⚡ Available 24/7</p>
+                <div class="flex-1">
+                  <p class="font-semibold text-gray-900">WhatsApp</p>
+                  <p class="text-sm text-gray-600">Instant support</p>
                 </div>
+                <span class="text-green-500 font-semibold">→</span>
               </div>
-
-              <!-- Email info -->
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              
+              <div class="flex items-center gap-4 p-3 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors">
+                <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900">Email</h4>
-                  <p class="text-gray-600">info@rentas.com</p>
-                  <p class="text-sm text-blue-600 font-medium">📧 Within 24 hours</p>
-                </div>
-              </div>
-
-              <!-- Hours -->
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900">Support Hours</h4>
-                  <p class="text-gray-600">Mon - Fri: 9AM - 8PM</p>
-                  <p class="text-sm text-gray-500">Weekend: 10AM - 6PM</p>
+                <div class="flex-1">
+                  <p class="font-semibold text-gray-900">Email</p>
+                  <p class="text-sm text-gray-600 font-mono">info@rentas.com</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Quick help -->
-          <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-6 border border-pink-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">💡 Quick Help</h3>
-            <div class="space-y-3 text-sm text-gray-700">
-              <p><span class="font-medium">Urgent questions?</span> Use WhatsApp for instant help</p>
-              <p><span class="font-medium">Detailed inquiries?</span> Send us an email for comprehensive support</p>
-              <p><span class="font-medium">Property partnerships?</span> Email us your property details</p>
+          <!-- Trust Signals Bento -->
+          <div class="bg-gradient-to-br from-purple-400 to-pink-500 rounded-3xl p-6 text-white">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-bold text-lg">Fast Response</div>
+                <div class="text-sm opacity-90">Usually within 1 hour</div>
+              </div>
+            </div>
+            <div class="bg-white/20 backdrop-blur-sm rounded-xl p-3">
+              <div class="text-xs opacity-75 mb-1">Average response time</div>
+              <div class="text-2xl font-bold">&lt; 1 hour</div>
+            </div>
+          </div>
+
+          <!-- Why Choose Us Bento -->
+          <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-bold text-gray-900 text-lg mb-4">Why Choose Us?</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">⚡</span>
+                <div>
+                  <p class="font-semibold text-sm">Lightning Fast</p>
+                  <p class="text-xs text-gray-600">Instant responses</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🏆</span>
+                <div>
+                  <p class="font-semibold text-sm">Expert Help</p>
+                  <p class="text-xs text-gray-600">Professional advice</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🔒</span>
+                <div>
+                  <p class="font-semibold text-sm">Secure</p>
+                  <p class="text-xs text-gray-600">Safe bookings</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</DefaultLayout>
 
-<script>
-  const PHONE_NUMBER = "56938980598";
-  const EMAIL_ADDRESS = "info@rentas.com";
+  <script>
+    const PHONE_NUMBER = "56938980598";
+    const EMAIL_ADDRESS = "info@rentas.com";
 
-  // Quick contact buttons
-  document.getElementById('whatsapp-contact')?.addEventListener('click', () => {
-    const message = `¡Hola! Me gustaría obtener información sobre las propiedades disponibles en Rentas.
-
-Enviado desde: rentas.com/contact
-Fecha: ${new Date().toLocaleString('es-ES')}`;
-    
-    window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-  });
-
-  document.getElementById('email-contact')?.addEventListener('click', () => {
-    const subject = 'Consulta sobre propiedades - Rentas';
-    const body = `Hola equipo de Rentas,
-
-Me gustaría obtener más información sobre sus propiedades disponibles.
-
-Enviado desde: rentas.com/contact
-Fecha: ${new Date().toLocaleString('es-ES')}
-
-Saludos`;
-    
-    window.open(`mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
-  });
-
-  // Form functions
-  function getFormData() {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    if (!form) return null;
-
-    const formData = new FormData(form);
-    return {
-      name: (formData.get('name') as string) || '',
-      email: (formData.get('email') as string) || '',
-      phone: (formData.get('phone') as string) || '',
-      inquiryType: (formData.get('inquiry-type') as string) || '',
-      message: (formData.get('message') as string) || ''
-    };
-  }
-
-  function validateForm() {
-    const form = document.getElementById('contact-form');
-    if (!form) return false;
-
-    const requiredFields = form.querySelectorAll('[required]');
-    let isValid = true;
-
-    requiredFields.forEach(field => {
-      const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-      if (!inputField.value.trim()) {
-        field.classList.add('border-red-300', 'focus:ring-red-500');
-        isValid = false;
-      } else {
-        field.classList.remove('border-red-300', 'focus:ring-red-500');
-      }
-    });
-
-    if (!isValid) {
-      showNotification('Please fill in all required fields', 'error');
+    // Form utilities
+    function getFormData() {
+      const form = document.getElementById("contact-form") as HTMLFormElement;
+      if (!form) return null;
+      
+      const formData = new FormData(form);
+      return {
+        name: (formData.get("name") as string) || "",
+        email: (formData.get("email") as string) || "",
+        inquiryType: (formData.get("inquiry-type") as string) || "",
+        message: (formData.get("message") as string) || "",
+      };
     }
 
-    return isValid;
-  }
-
-  function showNotification(message: string, type: 'success' | 'error' = 'success') {
-    const colors = {
-      success: 'bg-green-500',
-      error: 'bg-red-500'
-    };
-
-    const toast = document.createElement('div');
-    toast.className = `fixed top-4 left-4 right-4 lg:left-auto lg:right-4 lg:w-80 ${colors[type]} text-white px-4 py-3 rounded-xl shadow-lg z-50 transform -translate-y-full opacity-0 transition-all duration-300`;
-    toast.innerHTML = `
-      <div class="flex items-center justify-between">
-        <span class="font-medium">${message}</span>
-        <button onclick="this.parentElement.parentElement.remove()" class="ml-3 text-white/80 hover:text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-      toast.classList.remove('-translate-y-full', 'opacity-0');
-    }, 100);
-    
-    setTimeout(() => {
-      if (document.body.contains(toast)) {
-        toast.classList.add('-translate-y-full', 'opacity-0');
-        setTimeout(() => {
-          if (document.body.contains(toast)) {
-            document.body.removeChild(toast);
-          }
-        }, 300);
-      }
-    }, 4000);
-  }
-
-  function clearForm() {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    if (form) {
-      form.reset();
-      // Remove any error styling
-      const fields = form.querySelectorAll('input, select, textarea');
-      fields.forEach(field => {
-        field.classList.remove('border-red-300', 'focus:ring-red-500');
+    function validateForm(): boolean {
+      const form = document.getElementById("contact-form");
+      if (!form) return false;
+      
+      const requiredFields = form.querySelectorAll("[required]");
+      let isValid = true;
+      
+      requiredFields.forEach((field) => {
+        const input = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+        if (!input.value.trim()) {
+          input.classList.add("border-red-300", "focus:border-red-500");
+          input.classList.remove("border-gray-200", "focus:border-pink-500");
+          isValid = false;
+        } else {
+          input.classList.remove("border-red-300", "focus:border-red-500");
+          input.classList.add("border-gray-200", "focus:border-pink-500");
+        }
       });
+      
+      if (!isValid) {
+        showNotification("Please fill in all required fields", "error");
+      }
+      
+      return isValid;
     }
-  }
 
-  // Form submission handlers
-  document.getElementById('whatsapp-btn')?.addEventListener('click', function() {
-    if (!validateForm()) return;
+    function showNotification(message: string, type: "success" | "error" = "success"): void {
+      const colors = {
+        success: "bg-green-500",
+        error: "bg-red-500",
+      };
 
-    const data = getFormData();
-    if (!data) return;
+      const notification = document.createElement("div");
+      notification.className = `fixed top-4 right-4 ${colors[type]} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+      notification.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span>${message}</span>
+          <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white/80 hover:text-white">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      `;
 
-    const inquiryTypeMap: Record<string, string> = {
-      'booking': 'Consulta de Reserva',
-      'property': 'Información de Propiedad',
-      'support': 'Soporte al Cliente',
-      'partnership': 'Asociación de Propiedad',
-      'feedback': 'Comentarios',
-      'other': 'Otro'
-    };
+      document.body.appendChild(notification);
 
-    const inquiryTypeES = inquiryTypeMap[data.inquiryType as string] || data.inquiryType;
+      // Animate in
+      setTimeout(() => {
+        notification.classList.remove("translate-x-full");
+      }, 100);
 
-    const whatsappMessage = `🏠 *RENTAS - NUEVA CONSULTA*
+      // Auto remove
+      setTimeout(() => {
+        if (document.body.contains(notification)) {
+          notification.classList.add("translate-x-full");
+          setTimeout(() => {
+            if (document.body.contains(notification)) {
+              document.body.removeChild(notification);
+            }
+          }, 300);
+        }
+      }, 4000);
+    }
 
-👤 *Cliente:* ${data.name}
-📧 *Email:* ${data.email}
-📱 *Teléfono:* ${data.phone || 'No proporcionado'}
+    function clearForm(): void {
+      const form = document.getElementById("contact-form") as HTMLFormElement;
+      if (form) {
+        form.reset();
+        // Remove error styles
+        const fields = form.querySelectorAll("input, select, textarea");
+        fields.forEach((field) => {
+          field.classList.remove("border-red-300", "focus:border-red-500");
+          field.classList.add("border-gray-200", "focus:border-pink-500");
+        });
+      }
+    }
 
-📋 *Consulta:* ${inquiryTypeES}
+    // Event handlers
+    document.getElementById("whatsapp-btn")?.addEventListener("click", () => {
+      if (!validateForm()) return;
+      
+      const data = getFormData();
+      if (!data) return;
 
-💬 *Mensaje:*
+      const message = `🏠 *RENTAS INQUIRY*
+
+👤 Name: ${data.name}
+📧 Email: ${data.email}
+📋 Type: ${data.inquiryType}
+
+💬 Message:
 ${data.message}
 
-⏰ ${new Date().toLocaleString('es-ES')}
-🌐 Enviado desde: rentas.com/contact`;
+⏰ ${new Date().toLocaleString()}
+🌐 From: rentas.com/contact`;
 
-    window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-    showNotification('✅ Redirecting to WhatsApp...', 'success');
-    setTimeout(() => clearForm(), 1000);
-  });
+      window.open(
+        `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+      
+      showNotification("✅ Redirecting to WhatsApp...", "success");
+      setTimeout(() => clearForm(), 1000);
+    });
 
-  document.getElementById('gmail-btn')?.addEventListener('click', async function() {
-    if (!validateForm()) return;
+    document.getElementById("quick-chat")?.addEventListener("click", () => {
+      const message = `Hi! I'm interested in your rental properties and would like to get more information.
 
-    const data = getFormData();
-    if (!data) return;
+Sent from: rentas.com/contact
+Time: ${new Date().toLocaleString()}`;
 
-    // Disable button and show loading
-    const button = this as HTMLButtonElement;
-    const originalContent = button.innerHTML;
-    
-    button.disabled = true;
-    button.innerHTML = `
-      <svg class="animate-spin w-5 h-5 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-      <span>Sending...</span>
-    `;
+      window.open(
+        `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    });
 
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          inquiryType: data.inquiryType,
-          message: data.message
-        })
-      });
+    document.getElementById("email-btn")?.addEventListener("click", () => {
+      if (!validateForm()) return;
+      
+      const data = getFormData();
+      if (!data) return;
 
-      const result = await response.json();
+      const subject = `${data.inquiryType} Inquiry - ${data.name}`;
+      const body = `Hello Rentas Team,
 
-      if (result.success) {
-        showNotification('✅ Email sent successfully!', 'success');
-        clearForm();
-      } else {
-        throw new Error(result.error || 'Unknown error');
+Name: ${data.name}
+Email: ${data.email}
+Inquiry Type: ${data.inquiryType}
+
+Message:
+${data.message}
+
+Sent from: rentas.com/contact
+Time: ${new Date().toLocaleString()}
+
+Best regards,
+${data.name}`;
+
+      window.open(
+        `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+        "_blank"
+      );
+      
+      showNotification("✅ Opening email client...", "success");
+      setTimeout(() => clearForm(), 1000);
+    });
+
+    // Real-time validation
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      if (form) {
+        const fields = form.querySelectorAll("input[required], select[required], textarea[required]");
+        
+        fields.forEach((field) => {
+          field.addEventListener("blur", () => {
+            const input = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+            if (!input.value.trim()) {
+              input.classList.add("border-red-300", "focus:border-red-500");
+              input.classList.remove("border-gray-200", "focus:border-pink-500");
+            } else {
+              input.classList.remove("border-red-300", "focus:border-red-500");
+              input.classList.add("border-gray-200", "focus:border-pink-500");
+            }
+          });
+        });
       }
-    } catch (error) {
-      console.error('Error:', error);
-      showNotification('❌ Error sending email. Please try again.', 'error');
-    } finally {
-      // Restore button
-      button.disabled = false;
-      button.innerHTML = originalContent;
-    }
-  });
-</script>
-
-<style>
-  /* Mobile touch optimizations */
-  @media (max-width: 768px) {
-    /* Improve touch targets */
-    button, .touch-target {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Reduce animations on mobile for better performance */
-    .hover\:scale-\[1\.02\]:hover {
-      transform: none;
-    }
-    
-    /* Better focus states for mobile */
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
-    }
-  }
-  
-  /* Desktop enhancements */
-  @media (min-width: 1024px) {
-    /* Smooth parallax effect */
-    .group:hover .group-hover\:translate-x-1 {
-      transform: translateX(0.25rem);
-    }
-    
-    /* Enhanced shadows */
-    .shadow-lg {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f5f9;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 3px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #cbd5e1;
-  }
-</style>
+    });
+  </script>
+</DefaultLayout>

@@ -7,181 +7,430 @@ import ListingCard from "../components/ListingCard.astro";
 import { getCollection } from "astro:content";
 
 const rentals = await getCollection("rentals");
-const featuredRentals = rentals.slice(0, 8);
+const featuredRentals = rentals.slice(0, 6); // Mantenemos 6 propiedades
 
-const checkIcon = `<svg class="w-10 h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const checkIcon = `<svg class="w-8 h-8 md:w-10 md:h-10 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>`;
 
-const clockIcon = `<svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const clockIcon = `<svg class="w-8 h-8 md:w-10 md:h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>`;
 
-const lockIcon = `<svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const lockIcon = `<svg class="w-8 h-8 md:w-10 md:h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
 </svg>`;
 ---
-
 <DefaultLayout title="Rentas - Your Perfect Stay & Ride Awaits">
+  <!-- Skip Link para accesibilidad -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
+    Skip to main content
+  </a>
+
   <!-- Hero con todo integrado -->
   <Hero />
 
-  <!-- Featured Properties Section -->
-  <section class="py-12 lg:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeader 
-        title="Featured Properties"
-        subtitle="Handpicked selection of our best properties to inspire your next getaway"
-      />
+  <main id="main-content">
+    <!-- Featured Properties Section - Grid más compacto para móvil -->
+    <section class="py-8 md:py-12 lg:py-16 bg-gray-50" aria-labelledby="featured-properties">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="prose prose-lg md:prose-xl max-w-none text-center mb-8 md:mb-12">
+          <SectionHeader
+            title="Featured Properties"
+            subtitle="Handpicked selection of our best properties"
+          />
+        </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-6 lg:gap-8">
-        {featuredRentals.map((rental) => (
-          <div class="group">
-            <ListingCard
-              price={rental.data.price_per_night.toString()}
-              image={rental.data.main_image}
-              location={rental.data.location}
-              slug={rental.slug}
-            />
+        <!-- Grid optimizado para móvil: 2 columnas en móvil, 3 en tablet, 4 en desktop -->
+        {featuredRentals.length > 0 ? (
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6" role="list" aria-label="Featured rental properties">
+            {
+              featuredRentals.map((rental, index) => (
+                <div class="group transform transition-all duration-300 hover:-translate-y-1" role="listitem">
+                  <div class="mobile-compact-card">
+                    <ListingCard
+                      price={rental.data.price_per_night.toString()}
+                      image={rental.data.main_image}
+                      location={rental.data.location}
+                      slug={rental.slug}
+                    />
+                  </div>
+                </div>
+              ))
+            }
           </div>
-        ))}
+        ) : (
+          <div class="text-center py-12">
+            <p class="text-gray-500 text-lg">No properties available at the moment.</p>
+            <p class="text-gray-400 text-sm mt-2">Please check back later for new listings.</p>
+          </div>
+        )}
+
+        <div class="text-center mt-6 md:mt-8">
+          <a
+            href="/listing"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-3 px-6 md:py-4 md:px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+            aria-label="View all available properties"
+          >
+            <span>View All Properties</span>
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="text-center mt-10 lg:mt-12">
-        <a 
-          href="/listing"
-          class="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-        >
-          <span>View All Properties</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
+    <!-- Why Choose Us Section -->
+    <section class="py-6 md:py-12 lg:py-16 bg-white" aria-labelledby="why-choose-us">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="prose prose-lg md:prose-xl max-w-none text-center mb-6 md:mb-8">
+          <SectionHeader
+            title="Why Choose Rentas?"
+            subtitle="Simple, secure, and enjoyable booking experience"
+          />
+        </div>
+
+        <!-- Grid optimizado: 3 columnas en móvil, manteniendo las 3 en desktop -->
+        <div class="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-6 lg:gap-8" role="list" aria-label="Our key features">
+          <div class="transform transition-all duration-300 hover:scale-105" role="listitem">
+            <div class="mobile-feature-card">
+              <FeatureCard
+                title="Verified Quality"
+                description="All properties and vehicles are carefully inspected for quality and safety."
+                iconSvg={checkIcon}
+                bgColor="bg-pink-100"
+                iconColor="text-pink-600"
+              />
+            </div>
+          </div>
+
+          <div class="transform transition-all duration-300 hover:scale-105" role="listitem">
+            <div class="mobile-feature-card">
+              <FeatureCard
+                title="24/7 Support"
+                description="Get help whenever you need it with our round-the-clock support team."
+                iconSvg={clockIcon}
+                bgColor="bg-blue-100"
+                iconColor="text-blue-600"
+              />
+            </div>
+          </div>
+
+          <div class="transform transition-all duration-300 hover:scale-105" role="listitem">
+            <div class="mobile-feature-card">
+              <FeatureCard
+                title="Secure Booking"
+                description="Your payments and information are protected with bank-level security."
+                iconSvg={lockIcon}
+                bgColor="bg-green-100"
+                iconColor="text-green-600"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Why Choose Us Section -->
-  <section class="py-12 lg:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <SectionHeader 
-        title="Why Choose Rentas?"
-        subtitle="We make finding and booking your perfect stay or ride simple, secure, and enjoyable"
-      />
+    <!-- CTA Section -->
+   <section class="py-10 md:py-16 lg:py-20 relative overflow-hidden" aria-labelledby="call-to-action">
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img
+      src="/home-footer.webp"
+      alt="Beautiful travel destination with scenic landscape"
+      class="w-full h-full object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+    <!-- Overlay más sutil pero con mejor contraste -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/110 via-black/30 to-black/10"></div>
+  </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-        <FeatureCard 
-          title="Verified Quality"
-          description="All properties and vehicles are carefully inspected and verified for quality and safety standards."
-          iconSvg={checkIcon}
-          bgColor="bg-pink-100"
-          iconColor="text-pink-600"
-        />
-
-        <FeatureCard 
-          title="24/7 Support"
-          description="Get help whenever you need it with our round-the-clock customer support team."
-          iconSvg={clockIcon}
-          bgColor="bg-blue-100"
-          iconColor="text-blue-600"
-        />
-
-        <FeatureCard 
-          title="Secure Booking"
-          description="Your payments and personal information are always protected with bank-level security."
-          iconSvg={lockIcon}
-          bgColor="bg-green-100"
-          iconColor="text-green-600"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-16 lg:py-24 relative overflow-hidden">
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0">
-      <img 
-        src="/home-footer.webp" 
-        alt="Background" 
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black/60"></div>
-    </div>
-    
-    <!-- Content -->
-    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
-      <p class="text-lg lg:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <!-- Contenedor con backdrop más transparente -->
+    <div class="bg-black/10 custom-blur rounded-2xl p-6 md:p-8 lg:p-10">
+      <h2 id="call-to-action" class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4 leading-tight drop-shadow-2xl">
+        Ready to Start Your
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">
+          Journey?
+        </span>
+      </h2>
+      <p class="text-base md:text-lg lg:text-xl text-gray-100 mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
         Join thousands of satisfied customers who have found their perfect stays and rides with us.
       </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-6 md:mb-8">
+        <a
           href="/listing"
-          class="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+          class="group bg-white/20 custom-blur border-2 border-white/40 text-white hover:bg-white hover:text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-xl"
+          aria-label="Browse and find your perfect accommodation"
         >
-          Find Your Stay
+          <span class="flex items-center justify-center gap-2">
+            🏠 Find Your Stay
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </span>
         </a>
-        <a 
+        <a
           href="/cars"
-          class="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+          class="group bg-white/20 custom-blur border-2 border-white/40 text-white hover:bg-white hover:text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-xl"
+          aria-label="Browse and rent vehicles for your trip"
         >
-          Rent Your Ride
+          <span class="flex items-center justify-center gap-2">
+            🚗 Rent Your Ride
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </span>
+        </a>
+        <a
+          href="/experience"
+          class="group bg-white/20 custom-blur border-2 border-white/40 text-white hover:bg-white hover:text-gray-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-xl"
+          aria-label="Discover unique experiences and activities"
+        >
+          <span class="flex items-center justify-center gap-2">
+            ✨ Experience
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Contact Link -->
+      <div class="border-t border-white/40 pt-4 md:pt-6">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 text-gray-200 hover:text-pink-300 font-medium transition-all duration-300 text-sm md:text-base rounded-md px-3 py-2 hover:bg-white/10"
+          aria-label="Contact our support team for assistance"
+        >
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          Need Help? Contact Us
         </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+  </main>
 </DefaultLayout>
 
 <style>
-  /* Hide scrollbar for mobile category scroll */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Mobile optimizations */
+  /* Optimización para cards más compactas en móvil */
   @media (max-width: 768px) {
-    /* Improve touch targets */
-    button {
-      min-height: 44px;
+    .mobile-compact-card {
+      /* Hacer las ListingCard más pequeñas en móvil */
+      font-size: 0.875rem; /* text-sm */
     }
     
-    /* Better mobile spacing */
+    /* Reducir espaciado vertical en móvil */
+    section {
+      scroll-margin-top: 2rem;
+    }
+    
+    /* Hacer los hover effects más sutiles en móvil */
+    .group:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Compactar grid gaps en móvil */
+    .grid {
+      gap: 0.75rem; /* gap-3 */
+    }
+
+    /* Prose optimizado para móvil */
+    .prose {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    .prose h1, .prose h2, .prose h3 {
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    
+    .prose p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Optimización específica para móviles muy pequeños */
+  @media (max-width: 640px) {
+    .mobile-compact-card :global(.listing-card) {
+      /* Altura fija para consistencia */
+      min-height: 280px;
+      max-height: 320px;
+    }
+    
+    .mobile-compact-card :global(.listing-card img) {
+      height: 140px !important;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+    
+    .mobile-compact-card :global(.listing-card .card-content) {
+      padding: 0.75rem !important;
+    }
+  }
+  
+  /* Desktop hover effects */
+  @media (min-width: 1024px) {
+    .group:hover {
+      transform: translateY(-8px);
+    }
+    
+    .hover\:shadow-2xl:hover {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+
+  .custom-blur {
+  backdrop-filter: blur(2px); /* Ajusta el valor: 1px, 2px, 3px, etc. */
+}
+  
+  /* Mejores transitions con cubic-bezier */
+  .group {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Respeto a preferencias de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    .group {
+      transition: none;
+    }
+
+  
+
+
+    
     .group:hover {
       transform: none;
     }
-    
-    /* Optimize images for mobile */
-    img {
-      will-change: transform;
-    }
-  }
 
-  /* Desktop enhancements */
-  @media (min-width: 1024px) {
-    /* Smooth hover effects */
-    .group:hover {
-      transform: translateY(-4px);
+    .bg-gradient-to-r {
+      animation: none;
     }
-    
-    /* Enhanced shadows */
-    .hover\:shadow-md:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-  }
 
-  /* Performance optimizations */
-  .grid > * {
-    contain: layout style paint;
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
   
-  /* Smooth animations */
-  .active\:scale-95:active {
-    transform: scale(0.95);
+  /* Smooth gradient animations */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
+  
+  .bg-gradient-to-r {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease-in-out infinite;
+  }
+
+  /* Compactar ListingCard específicamente en móvil */
+  @media (max-width: 768px) {
+    .mobile-feature-card :global(.feature-card) {
+      padding: 1rem !important; /* Reducir padding */
+    }
+    
+    .mobile-feature-card :global(.feature-card h3) {
+      font-size: 0.875rem !important; /* text-sm para títulos */
+      line-height: 1.25rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .mobile-feature-card :global(.feature-card p) {
+      font-size: 0.75rem !important; /* text-xs para descripciones */
+      line-height: 1rem !important;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Limitar a 3 líneas */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .mobile-feature-card :global(.feature-card svg) {
+      width: 1.5rem !important; /* w-6 */
+      height: 1.5rem !important; /* h-6 */
+    }
+    
+    /* Reducir padding de la sección en móvil */
+    section.py-6 {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /* Prose customizations */
+  .prose {
+    color: inherit;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: inherit;
+    font-weight: inherit;
+  }
+  
+  .prose p {
+    color: inherit;
+  }
+  
+  /* Prose invert overrides for dark sections */
+  .prose-invert {
+    --tw-prose-body: rgba(255, 255, 255, 0.9);
+    --tw-prose-headings: rgb(255, 255, 255);
+    --tw-prose-links: rgb(255, 255, 255);
+  }
+  
+  /* Remove default prose link styling for buttons */
+  .prose a.inline-flex {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+  }
+  
+  .prose a.inline-flex:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Estilos de accesibilidad mejorados */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Focus states mejorados para todos los elementos interactivos */
+  a:focus,
+  button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* Estados de focus personalizados ya están en las clases inline */
 </style>

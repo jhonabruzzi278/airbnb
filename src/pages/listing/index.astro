@@ -1,7 +1,7 @@
 ---
 // filepath: src/pages/listings/index.astro
 import DefaultLayout from "../../layouts/DefaultLayout.astro";
-import Hero from "../../components/Hero.astro";
+
 import ListingCard from "../../components/ListingCard.astro";
 import { getCollection } from "astro:content";
 import { categories } from "../../data/categories.js";
@@ -21,12 +21,12 @@ const sortedRentals = allRentals.sort((a, b) => a.data.price_per_night - b.data.
 ---
 
 <DefaultLayout title="All Properties - Find Your Perfect Stay">
-  <Hero />
   
-  <!-- Header Section -->
+  
+ 
   <div class="bg-gradient-to-br from-gray-50 via-white to-pink-50">
     <div class="mx-auto max-w-7xl px-4 lg:px-6 py-8 lg:py-12">
-      <!-- Breadcrumb -->
+      
       <nav class="flex items-center space-x-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
         <a href="/" class="hover:text-pink-600 transition-colors">Home</a>
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -35,7 +35,7 @@ const sortedRentals = allRentals.sort((a, b) => a.data.price_per_night - b.data.
         <span class="text-gray-900 font-medium">All Properties</span>
       </nav>
 
-      <!-- Header Principal -->
+      
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
         <div>
           <h1 class="text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 mb-3 tracking-tight">
@@ -271,7 +271,7 @@ const sortedRentals = allRentals.sort((a, b) => a.data.price_per_night - b.data.
         </div>
       </div>
 
-      <!-- Load More Button -->
+      
       <div class="text-center mt-12">
         <button 
           id="load-more"

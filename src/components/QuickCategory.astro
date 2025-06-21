@@ -11,9 +11,18 @@ export interface Props {
 const { href, emoji, label, bgColor, hoverColor } = Astro.props;
 ---
 
-<a href={href} class={`group p-6 text-center rounded-xl ${bgColor} ${hoverColor} transition-colors duration-300`}>
-  <div class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{emoji}</div>
-  <div class={`text-sm font-medium text-gray-700 group-hover:${hoverColor.replace('bg-', 'text-').replace('-100', '-600')}`}>
+<a
+  href={href}
+  class={`group p-6 text-center rounded-xl ${bgColor} ${hoverColor} transition-colors duration-300`}
+>
+  <div
+    class="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300"
+  >
+    {emoji}
+  </div>
+  <div
+    class={`text-sm font-medium text-gray-700 group-hover:${hoverColor.replace("bg-", "text-").replace("-100", "-600")}`}
+  >
     {label}
   </div>
 </a>

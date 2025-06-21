@@ -1,0 +1,89 @@
+---
+// filepath: src/pages/experiences/category/[category].astro
+import { getCollection } from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import { experienceCategories } from "../../../data/experienceCategories.js";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return experienceCategories.map((cat) => ({
+    params: { category: cat.link },
+  }));
+}
+
+const { category } = Astro.params;
+const categoryInfo = experienceCategories.find((cat) => cat.link === category);
+const allExperiences = await getCollection("experiences");
+const categoryExperiences = allExperiences.filter(
+  (exp) => exp.data.category === category
+);
+---
+
+<DefaultLayout title={`${categoryInfo?.name} Experiences`}>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Back button -->
+    <a
+      href="/experiences"
+      class="inline-flex items-center gap-2 text-gray-600 hover:text-orange-600 mb-6"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back to All Experiences
+    </a>
+
+    <!-- Category header -->
+    <div class="text-center mb-12">
+      <div class="text-6xl mb-4">{categoryInfo?.icon}</div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        {categoryInfo?.name} Experiences
+      </h1>
+      <p class="text-xl text-gray-600">{categoryInfo?.description}</p>
+    </div>
+
+    <!-- Experiences grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        categoryExperiences.map((experience) => (
+          <div class="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
+            <img
+              src={experience.data.main_image}
+              alt={experience.data.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                {experience.data.title}
+              </h3>
+              <p class="text-gray-600 text-sm mb-3">
+                📍 {experience.data.location}
+              </p>
+
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-orange-600">
+                  €{experience.data.price_per_person}
+                </span>
+                <a
+                  href={`/experiences/${experience.slug}`}
+                  class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                >
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</DefaultLayout>
